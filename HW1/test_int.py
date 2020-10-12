@@ -19,11 +19,15 @@ class TestInt:
         assert a + i == expected
 
     # умножение
-    @pytest.mark.parametrize('a, i, expected', [(10, -1, -10), (10, 0, 0), (10, 1, 50)])
+    @pytest.mark.parametrize('a, i, expected', [(10, -1, -10), (1, 0, 0), (10, 1, 10), (-1, 0, 0), (0, 0, 0)])
     def test_int_mul(self, a, i, expected):
-        assert a + i == expected
+        assert a * i == expected
 
-    # умножение на 0
-    @pytest.mark.parametrize('i', list(range(-1, 2)))
-    def test_int_mul_zero(self, i):
-        assert i * 0 == 0
+    # остаток от деления
+    @pytest.mark.parametrize('a, i, expected', [(11, 1, 0), (11, 2, 1), (11, 11, 0), (11, 10, 1), (11, 12, 11)])
+    def test_int_mul(self, a, i, expected):
+        if i == 0:
+            with pytest.raises(ZeroDivisionError):
+                assert a % i
+        else:
+            assert a % i == expected

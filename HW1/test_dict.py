@@ -21,8 +21,8 @@ class TestDict:
     # очищение словаря
     def test_dict_clear(self):
         d = {1: 1}
-        dict.clear(d)
-        assert bool(d) is False
+        d.clear()
+        assert not d
 
     # обновление словаря имеющимся ключом
     def test_dict_values(self):
